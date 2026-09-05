@@ -1,139 +1,132 @@
-/* ===================== Xgn 消息侧头像/姓名合并显示 ===================== */
-/* 只在已开启对应开关的消息上生效(通过 .xgn-avatar-merged / .xgn-name-merged 类名区分)，
-   未命中的消息完全不受影响，保持 ST 原生外观。 */
+/* ===== Xgn settings panel ===== */
+.xgn-settings .xgn-current-theme {
+    margin: 5px 0 10px 0;
+    opacity: 0.8;
+    font-size: 0.9em;
+}
 
-/* 开启头像合并后，隐藏 ST 原生单头像，改为展示 Xgn 自己的头像组合 */
-.mes.xgn-avatar-merged > .mesAvatarWrapper > .avatar {
-    display: none !important;
+.xgn-settings .xgn-block {
+    margin-bottom: 12px;
+}
+
+.xgn-settings .xgn-block > label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.xgn-search-results,
+.xgn-bound-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 6px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.xgn-empty-hint {
+    opacity: 0.6;
+    font-size: 0.9em;
+    padding: 4px 0;
+}
+
+.xgn-search-row,
+.xgn-bound-row {
+    border: 1px solid var(--SmartThemeBorderColor, rgba(255, 255, 255, 0.15));
+    border-radius: 6px;
+    padding: 6px 8px;
+}
+
+.xgn-search-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.xgn-bound-row-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.xgn-theme-name {
+    word-break: break-all;
+}
+
+.xgn-bound-row .checkbox_label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 2px 0;
+    cursor: pointer;
+}
+
+/* ===== Injected in-chat elements ===== */
+
+/* Avatar group: replaces the single avatar visually, without touching mes_block */
+.mesAvatarWrapper.xgn-avatar-active > .avatar {
+    display: none;
 }
 
 .xgn-avatar-group {
-    display: flex;
+    display: none;
     align-items: center;
-    justify-content: center;
     gap: 4px;
-    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
-.xgn-avatar-item {
-    width: 22px;
-    height: 22px;
+.mesAvatarWrapper.xgn-avatar-active .xgn-avatar-group {
+    display: flex;
+}
+
+.xgn-avatar-group .xgn-user-avatar,
+.xgn-avatar-group .xgn-char-avatar {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    overflow: hidden;
-    flex: 0 0 auto;
-    box-shadow: 0 0 0 1px var(--SmartThemeBorderColor, rgba(255, 255, 255, 0.2));
-}
-
-.xgn-avatar-item img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
-    display: block;
+    flex-shrink: 0;
 }
 
-.xgn-avatar-item-char {
-    margin-left: -8px;
-}
-
-/* 开启姓名合并后，隐藏 ST 原生单姓名，改为展示 Xgn 自己的姓名组合 */
-.mes.xgn-name-merged > .mes_block > .ch_name .name_text {
-    display: none !important;
+/* Name group: replaces the single name_text visually, without touching mes_block */
+.xgn-name-active > .name_text {
+    display: none;
 }
 
 .xgn-name-group {
-    display: inline-flex;
+    display: none;
     align-items: baseline;
     gap: 4px;
-    font-weight: 600;
+    flex-wrap: wrap;
 }
 
-.xgn-name-sep {
+.xgn-name-active .xgn-name-group {
+    display: inline-flex;
+}
+
+.xgn-name-group .xgn-name-sep {
     opacity: 0.6;
-    font-weight: 400;
 }
 
-/* ===================== 设置面板样式 ===================== */
-
-.xgn-settings .xgn-desc,
-.xgn-settings .xgn-hint {
-    opacity: 0.8;
-    font-size: 0.9em;
-    margin: 4px 0 8px 0;
-}
-
-.xgn-toolbar {
-    gap: 10px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-}
-
-.xgn-current-theme {
-    opacity: 0.85;
-    font-size: 0.9em;
-}
-
-.xgn-theme-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    max-height: 320px;
-    overflow-y: auto;
-    padding-right: 4px;
-}
-
-.xgn-theme-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-    padding: 6px 8px;
-    border: 1px solid var(--SmartThemeBorderColor, rgba(255, 255, 255, 0.1));
-    border-radius: 6px;
-}
-
-.xgn-bind-label {
-    min-width: 140px;
-    font-weight: 600;
-}
-
-.xgn-sub-toggle {
-    font-size: 0.9em;
-    opacity: 0.95;
-}
-
-.xgn-sub-toggle input:disabled + span {
-    opacity: 0.5;
-}
-
-.xgn-empty {
-    opacity: 0.7;
-    font-style: italic;
-    padding: 6px 0;
-}
-
-/* ===================== 响应式：移动端 ===================== */
+/* ===== Responsive (mobile) ===== */
 @media (max-width: 600px) {
-    .xgn-avatar-item {
-        width: 18px;
-        height: 18px;
-    }
-
-    .xgn-avatar-item-char {
-        margin-left: -6px;
+    .xgn-avatar-group .xgn-user-avatar,
+    .xgn-avatar-group .xgn-char-avatar {
+        width: 28px;
+        height: 28px;
     }
 
     .xgn-name-group {
         font-size: 0.9em;
-        flex-wrap: wrap;
+        gap: 3px;
     }
 
-    .xgn-theme-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
-
-    .xgn-bind-label {
-        min-width: unset;
+    .xgn-search-row,
+    .xgn-bound-row {
+        padding: 5px 6px;
     }
 }
