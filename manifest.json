@@ -1,13 +1,13 @@
 {
-    "display_name": "User + Char Message Info",
+    "display_name": "Xgn",
     "loading_order": 10,
     "requires": [],
     "optional": [],
     "js": "index.js",
     "css": "style.css",
-    "author": "Your Name",
+    "author": "4iovu",
     "version": "1.0.0",
-    "homePage": "https://github.com/your-name/swc-user-char-message-info",
+    "homePage": "https://github.com/4iovu/Xgn",
     "hooks": {
         "activate": "init"
     }
