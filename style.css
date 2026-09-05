@@ -1,0 +1,180 @@
+/* =========================================================
+   User + Char Message Info
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   设置面板
+   --------------------------------------------------------- */
+
+#swc-settings {
+    width: 100%;
+}
+
+.swc-settings-description {
+    margin: 5px 0 10px;
+    opacity: 0.7;
+    line-height: 1.5;
+}
+
+.swc-theme-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+}
+
+.swc-theme-toolbar select {
+    min-width: 0;
+    flex: 1;
+}
+
+.swc-theme-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.swc-empty {
+    padding: 10px;
+    text-align: center;
+    opacity: 0.5;
+}
+
+.swc-theme-item {
+    padding: 10px;
+    border-radius: 8px;
+    background: var(--SmartThemeBlurTintColor);
+}
+
+.swc-theme-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.swc-theme-name {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.swc-theme-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin-top: 8px;
+}
+
+
+/* ---------------------------------------------------------
+   头像
+   --------------------------------------------------------- */
+
+.swc-avatar-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+
+/*
+ * User 头像
+ */
+
+.swc-avatar-user {
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+}
+
+.swc-avatar-user img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+/*
+ * Char 头像
+ */
+
+.swc-avatar-char {
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+}
+
+.swc-avatar-char img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+/* ---------------------------------------------------------
+   姓名
+   --------------------------------------------------------- */
+
+.swc-name-group {
+    display: inline-flex;
+    align-items: baseline;
+    margin-left: 6px;
+    gap: 6px;
+}
+
+.swc-name-user,
+.swc-name-char {
+    display: inline;
+}
+
+
+/* ---------------------------------------------------------
+   移动端
+   --------------------------------------------------------- */
+
+@media screen and (max-width: 600px) {
+
+    .swc-theme-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .swc-theme-toolbar select {
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    .swc-theme-toolbar button {
+        width: 100%;
+    }
+
+    .swc-theme-options {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .swc-name-group {
+        margin-left: 4px;
+        gap: 4px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   防止插件自身节点被 ST 的某些样式影响
+   --------------------------------------------------------- */
+
+.swc-avatar-group img {
+    pointer-events: none;
+}
+
+.swc-avatar-user,
+.swc-avatar-char {
+    overflow: hidden;
+}
